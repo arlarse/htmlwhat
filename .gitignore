@@ -1,0 +1,7 @@
+__pycache__/
+venv
+testing
+content
+build
+dist
+htmlwhat.egg-info
