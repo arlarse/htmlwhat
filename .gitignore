@@ -5,6 +5,3 @@ content
 build
 dist
 htmlwhat.egg-info
-_build/
-_templates/
-_static/
