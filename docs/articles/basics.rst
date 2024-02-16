@@ -8,7 +8,7 @@ responsible for verifying the presence of HTML tags in a given code.
 
 .. note:: 
 
-    - If you are not familiar with what ``Ex()`` is at the moment, don't worry. It will be explained in the :ref:`Habibi oiasyhd` (advanced section).
+    - If you are not familiar with what ``Ex()`` is at the moment, don't worry. It will be explained in the :ref:`How to Write Tests` section.
 
 .. autofunction:: htmlwhat.checks.check_html
 .. autofunction:: htmlwhat.checks.check_head

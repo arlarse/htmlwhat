@@ -119,8 +119,10 @@ or
 Problems after installation
 ---------------------------
 
-htmlwhat built over ``protowhat`` which uses ``jinja2==2.11.3``, and jinja uses ``MarkupSafe==2.0.1``.
-Hence you will face this error
+.. caution::
+
+    htmlwhat built over ``protowhat`` which uses ``jinja2==2.11.3``, and jinja uses ``MarkupSafe==2.0.1``. 
+    Hence you will face this error
 
 .. code-block:: bash
 

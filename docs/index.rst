@@ -29,18 +29,11 @@ helping them learn in the right direction.
 
    articles/basics.rst
    articles/how_to_write_test.rst
+   articles/electives.rst
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Acvanced Articles
 
-   articles/advanced.rst
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   articles/check_multiple_tags.rst
