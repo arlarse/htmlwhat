@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/htmlwhat.svg)](https://badge.fury.io/py/htmlwhat)
+
 # htmlwhat
 
 `htmlwhat` is a Python module that provides feedback on incorrect HTML code submissions. It's often used in educational platforms where students submit HTML code as part of their assignments or exercises.
