@@ -1,0 +1,3 @@
+beautifulsoup4~=4.12.3
+protowhat~=2.1.3
+sphinx-rtd-theme==2.0.0
