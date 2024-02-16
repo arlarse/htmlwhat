@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check Multiple Tags &mdash; htmlwhat 1.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=0b546569"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Electives" href="electives.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            htmlwhat
+          </a>
+              <div class="version">
+                1.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_start.html">Getting Start with htmlwhat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_start.html#installation">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic Articles</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Check Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html#check-tag-values">Check Tag Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_write_test.html">How to Write Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electives.html">Electives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Acvanced Articles</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Check Multiple Tags</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#multi"><code class="docutils literal notranslate"><span class="pre">multi()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check_not"><code class="docutils literal notranslate"><span class="pre">check_not()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check_or"><code class="docutils literal notranslate"><span class="pre">check_or()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check_correct"><code class="docutils literal notranslate"><span class="pre">check_correct()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">htmlwhat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Check Multiple Tags</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/articles/check_multiple_tags.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="check-multiple-tags">
+<h1>Check Multiple Tags<a class="headerlink" href="#check-multiple-tags" title="Permalink to this heading"></a></h1>
+<p>Until this point, we were checking straightforward HTML tags, but what if we want to check for multiple tags?
+For example, you might want to check for all the <code class="docutils literal notranslate"><span class="pre">li</span></code> tags inside <code class="docutils literal notranslate"><span class="pre">ol</span></code> tag. This involves a more complex check,
+as it requires us to examine the hierarchical structure of the HTML code.</p>
+<p>And we have <code class="docutils literal notranslate"><span class="pre">multi()</span></code> for that. This function is used to <strong>branch different chains</strong> of test functions,
+so that the same state is passed to all sub-chains. Most commonly, <code class="docutils literal notranslate"><span class="pre">multi()</span></code> is used to convert this code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>into this equivalent (and more performant) SCT:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Still the syntax is quite long but we can use <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to make it shorter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Hence, all the above code check for all the <code class="docutils literal notranslate"><span class="pre">li</span></code> tags inside <code class="docutils literal notranslate"><span class="pre">ol</span></code> but the last one is the most efficient way to do it.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="multi">
+<span class="sig-name descname"><span class="pre">multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tests</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi" title="Permalink to this definition"></a></dt>
+<dd><p>Run multiple subtests. This function could be thought as an AND statement, since all tests it runs must pass</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>object</em>) – State instance describing student and solution code. Can be omitted if used with <code class="code docutils literal notranslate"><span class="pre">Ex()</span></code>.</p></li>
+<li><p><strong>tests</strong> – One or more SCT/test functions to be branched.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The similar State object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">has_equal_attr</span><span class="p">(),</span>
+<span class="gp">... </span>   <span class="n">has_equal_text</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above SCT checks if the first <code class="docutils literal notranslate"><span class="pre">h1</span></code> tag has the same attributes and text as the solution code.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;form&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">has_equal_attr</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above SCT checks if the first three <code class="docutils literal notranslate"><span class="pre">input</span></code> tags inside the first <code class="docutils literal notranslate"><span class="pre">form</span></code> tag have the same <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute as the solution code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">multi()</span></code> function returns the same state, it was given. So whatever comes after multi will run the same as if multi wasn’t used.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Bad practice</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">has_equal_attr</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Good practice, first complete all check’s of a tag and then move to the next tag.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;ol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span>
+    <span class="n">has_equal_attr</span><span class="p">(),</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="check_not">
+<span class="sig-name descname"><span class="pre">check_not</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tests</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#check_not" title="Permalink to this definition"></a></dt>
+<dd><p>This function can be considered a direct counterpart of multi. It run multiple subtests that should
+fail. If all subtests fail, returns original state (for chaining)</p>
+<ul class="simple">
+<li><p>This function is currently only tested in working with <code class="docutils literal notranslate"><span class="pre">has_code()</span></code> in the subtests.</p></li>
+<li><p>This function can be thought as a <code class="docutils literal notranslate"><span class="pre">NOT(x</span> <span class="pre">OR</span> <span class="pre">y</span> <span class="pre">OR</span> <span class="pre">...)</span></code> statement, since all tests it runs must fail.</p></li>
+</ul>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>object</em>) – State instance describing student and solution code. Can be omitted if used with <code class="code docutils literal notranslate"><span class="pre">Ex()</span></code>.</p></li>
+<li><p><strong>tests</strong> – One or more sub-SCTs/test functions to run.</p></li>
+<li><p><strong>msg</strong> (<em>str</em>) – Feedback message that is shown in case not all tests specified in <code class="docutils literal notranslate"><span class="pre">*tests</span></code> fail.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original State object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>The SCT below runs two has_code cases.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;form&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">check_not</span><span class="p">(</span>
+    <span class="n">has_code</span><span class="p">(</span><span class="s1">&#39;style=&quot;.*?&quot;&#39;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">has_code</span><span class="p">(</span><span class="s1">&#39;height=&quot;.*?&quot;&#39;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Don&#39;t use inline styles with form&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>If students use <code class="docutils literal notranslate"><span class="pre">style=&quot;any</span> <span class="pre">style&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">height=&quot;any</span> <span class="pre">value&quot;</span></code> in their code, this test will fail.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="check_or">
+<span class="sig-name descname"><span class="pre">check_or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tests</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#check_or" title="Permalink to this definition"></a></dt>
+<dd><p>Check whether at least one SCT is correct.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>object</em>) – State instance describing student and solution code. Can be omitted if used with <code class="docutils literal notranslate"><span class="pre">Ex()</span></code>.</p></li>
+<li><p><strong>tests</strong> – One or more sub-SCTs/test functions to run.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>The SCT below tests that the student tag has <code class="docutils literal notranslate"><span class="pre">class</span></code> attribute or <code class="docutils literal notranslate"><span class="pre">data-class</span></code> attribute.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">check_body</span><span class="p">()</span><span class="o">.</span><span class="n">check_or</span><span class="p">(</span>
+    <span class="n">has_code</span><span class="p">(</span><span class="s1">&#39;class=&quot;.*?&quot;&#39;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">has_code</span><span class="p">(</span><span class="s1">&#39;data-class=&quot;.*?&quot;&#39;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="check_correct">
+<span class="sig-name descname"><span class="pre">check_correct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagnose</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#check_correct" title="Permalink to this definition"></a></dt>
+<dd><p>Allows feedback from a diagnostic SCT, only if a check SCT fails.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<em>object</em>) – State instance describing student and solution code. Can be omitted if used with <code class="docutils literal notranslate"><span class="pre">Ex()</span></code>.</p></li>
+<li><p><strong>check</strong> – An sct chain that must succeed.</p></li>
+<li><p><strong>diagnose</strong> – An sct chain to run if the check fails.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p>The SCT below tests whether <code class="docutils literal notranslate"><span class="pre">head</span></code> tag has code <code class="docutils literal notranslate"><span class="pre">Welcome</span></code> in it before diagnose SCT.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="p">()</span><span class="o">.</span><span class="n">check_head</span><span class="p">()</span><span class="o">.</span><span class="n">check_correct</span><span class="p">(</span>
+    <span class="n">has_code</span><span class="p">(</span><span class="s2">&quot;Welcome&quot;</span><span class="p">),</span>
+    <span class="n">check_tag</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">has_equal_text</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="electives.html" class="btn btn-neutral float-left" title="Electives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Arlarse.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
